@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>页面切换</title>
+</head>
+<style>
+	h1,body,html{
+		padding: 0;
+		margin:0;
+	}
+	body{
+		font-family: Arial,"Microsoft YaHei","Hiragino Sans GB",sans-serif;
+	}
+	h1{
+		font-size: 6em;
+		font-weight: normal;
+	}
+	p{
+		font-size: 2em;
+		margin: 0.5em 0 2em 0;
+	}
+	html,body{
+		height: 100%;
+		/*overflow: hidden;*/
+	}
+	#container,.section{
+		height: 100%
+	}
+	#setcion0,
+	#setcion1,#setcion2,#setcion3{
+		background-color: #000;
+		background-size: cover;
+		background-position: 50% 50%;
+	}
+	#setcion0{
+		background-image: url(images/1.jpg);
+	}
+	#setcion1{
+		background-image: url(images/2.jpg);
+	}
+	#setcion2{
+		background-image: url(images/3.jpg);
+	}
+	#setcion3{
+		background-image: url(images/4.jpg);
+	}
+	/*.left{
+		float: left;
+	}
+	#container{
+		width: 400%;
+	}
+	.section{
+		width: 25%;
+	}*/
+</style>
+<body>
+	<div id="container">
+		<div class="section  left" id="setcion0"></div>
+		<div class="section  left" id="setcion1"></div>
+		<div class="section  left"  left id="setcion2"></div>
+		<div class="section  left" id="setcion3"></div>
+	</div>
+</body>
+<script src="jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="pageswitch.js" type="text/javascript" charset="utf-8"></script>
+</html>
