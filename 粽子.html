@@ -8,6 +8,7 @@
 	
 </body>
 <script>
+//获取DOW对象
 var  g =function(id){
 	return document.getElementById(id);
 }
@@ -29,6 +30,7 @@ var  g =function(id){
 					var timeout = me.timeout;
 					var log = me.log;
 					timeout = Math.max(timeout-(ff||0),0)
+
 					setTimeout(fn,timeout);
 					setTimeout(function(){
 						console.log('time->',timeout,'log->',log);
@@ -38,14 +40,124 @@ var  g =function(id){
 			}
 		}
 	}
-	var s = new Timeline();
-	s.add(1000,function(){
-		console.log('first')
-	},'init')
-	s.add(1500,function(){
-		console.log('sec')
-	},'init')
 
-	s.start();
+	//初始场景
+	var s1 = new Timeline();
+	//粽子展开的场景
+	var s2 = new Timeline();
+	//粽子旋转场景
+	var s3 = new Timeline();
+
+
+	s1.add(1,function(){
+		g('c_zongzi_box').className =  'c_zongzi_box c_zongzi_box_rock'
+		g('c_shengzi').onclick = function(){
+			s2.start();
+			g('c_shengzi').onclick = function(){}
+		}
+	})
+	//定义粽子展开动画
+	s2.add(1.function(){
+		//停止抖动
+		g('c_zongzi_box').className =  'c_zongzi_box';
+		//祝福文字
+		g('text').className = 'text text_in c_zongzi_box_rock'
+
+	});
+	//粽子绳子解开
+	s2.add(100,function(){
+		g('c_shengzi').className =  'c_shengzi_2';
+	});
+	s2.add(500,function(){
+		g('c_shengzi').className =  'c_shengzi_3';
+	});
+	s2.add(1000,function(){
+		g('c_shengzi').className =  'c_shengzi_4';
+	});
+	s2.add(1500,function(){
+		g('c_shengzi').className =  'c_shengzi_0';
+	});
+	//粽肉动画
+	s2.add(2000,function(){
+		//粽肉动画
+		g('c_zongzi').className =  'c_zongzi  c_zongzi_out';
+		g('c_zongzirout').className =  'c_zongzirou  c_zongzirou_in';
+		//粽叶出现
+		g('c_zuoye').className =  'c_zuoye c_zuoye_in';
+		g('c_youye').className =  'c_youye c_youye_in';
+		//粽肉文字
+		g('c_t_1').className =  'c_t_1 c_t_in';
+		g('c_t_2').className =  'c_t_2 c_t_mirror_0';
+	});
+		s2.add(3000,function(){
+		//粽叶动画
+		g('c_zuoye').className =  'c_zuoye c_zuoye_in c_zuoye_out';
+		g('c_youye').className =  'c_youye c_youye_in c_youye_out';
+		g('c_diye').className =  'c_diye c_diye_in';
+		//粽肉旋转
+		s3.start();
+	});
+	//粽子托盘旋转动画定义
+	s3.add(1000,function(){
+		g('c_zongzirout').className =  'c_zongzirou  c_zongzirou_in c_zongzirou_view_1';
+	});
+	s3.add(1200,function(){
+		g('c_zongzirout').className =  'c_zongzirou  c_zongzirou_in c_zongzirou_view_2';
+		g('c_t_1').className = 'c_t_1 c_t_in c_t_viwe_2';
+		g('c_t_2').className = 'c_t_2 c_t_in c_t_mirror_2';
+	})
+	s3.add(1400,function(){
+		g('c_zongzirout').className =  'c_zongzirou  c_zongzirou_in c_zongzirou_view_3';
+		g('c_t_1').className = 'c_t_1 c_t_in c_t_viwe_3';
+		g('c_t_2').className = 'c_t_2 c_t_in c_t_mirror_3';
+	})
+	s3.add(1600,function(){
+		g('c_zongzirout').className =  'c_zongzirou  c_zongzirou_in c_zongzirou_view_4';
+		g('c_t_1').className = 'c_t_1 c_t_in c_t_viwe_4';
+		g('c_t_2').className = 'c_t_2 c_t_in c_t_mirror_4';
+	})
+	s3.add(1800,function(){
+		g('c_zongzirout').className =  'c_zongzirou  c_zongzirou_in c_zongzirou_view_0';
+		g('c_t_2').className = 'c_t_2 c_t_in c_t_mirror_0';
+		g('c_t_1').className = 'c_t_1 c_t_in c_t_viwe_0';
+	})
+	//粽子肉回转
+	s3.add(3000,function(){
+		g('c_zongzirout').className =  'c_zongzirou  c_zongzirou_in c_zongzirou_view_4';
+				g('c_t_1').className = 'c_t_1 c_t_in c_t_viwe_4';
+		g('c_t_2').className = 'c_t_2 c_t_in c_t_mirror_4';
+	})
+	s3.add(3200,function(){
+		g('c_zongzirout').className =  'c_zongzirou  c_zongzirou_in c_zongzirou_view_3';
+		g('c_t_1').className = 'c_t_1 c_t_in c_t_viwe_3';
+		g('c_t_2').className = 'c_t_2 c_t_in c_t_mirror_3';
+	})
+	s3.add(3400,function(){
+		g('c_zongzirout').className =  'c_zongzirou  c_zongzirou_in c_zongzirou_view_2';
+		g('c_t_1').className = 'c_t_1 c_t_in c_t_viwe_2';
+		g('c_t_2').className = 'c_t_2 c_t_in c_t_mirror_2';
+	})
+	s3.add(3600,function(){
+		g('c_zongzirout').className =  'c_zongzirou  c_zongzirou_in c_zongzirou_view_1';
+		g('c_t_2').className = 'c_t_2 c_t_in c_t_view_0';
+		g('c_t_1').className = 'c_t_1 c_t_in c_t_mirror_0';
+	})
+	s3.add(5000,function(){
+		s3.start();
+	})
+	// s2.start(3000);
+	//图片加载器
+	var imgs = ['img/zzr_2.png','img/zzr_3.png','img/zzr_4.png'];
+	var imgs_onload = function(){
+		imgs.pop();
+		if( imgs.length==0){
+			s2.start();
+		}
+		for(s in imgs){
+			var img = new Image;
+			img.onload = imgs_onload;
+			img.src = imgs[s];
+		}
+	}
 </script>
 </html>
